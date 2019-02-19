@@ -1,20 +1,14 @@
-/* eslint-disable import/no-dynamic-require,global-require,import/no-extraneous-dependencies */
-
 process.on('unhandledRejection', (err) => {
     throw err;
 });
 
 const path = require('path');
 const { spawn } = require('child_process');
-const { getConfigPath } = require('../utils');
+const { getConfigPath, getArgv } = require('../utils');
 
 const buildingPackage = process.cwd();
 
 const validConfigNames = ['jest.config.js', 'jest.config.json'];
-
-function argvOptions() {
-    return process.argv.slice(2);
-}
 
 function runTests(options = []) {
     console.log(`Running tests from ${buildingPackage}`);
@@ -31,4 +25,4 @@ function runTests(options = []) {
     jest.stderr.on('data', data => console.error(data.toString()));
 }
 
-runTests(argvOptions());
+runTests(getArgv());

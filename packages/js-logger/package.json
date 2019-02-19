@@ -11,6 +11,8 @@
     "start": "NODE_ENV=development node ../../scripts/start.js",
     "test": "node ../../scripts/runTests.js",
     "test:watch": "node ../../scripts/runTests.js --watchAll",
-    "test:coveralls": "node ../../scripts/runTests.js --coverageReporters=text-lcov | ../../node_modules/.bin/coveralls"
+    "test:coveralls": "node ../../scripts/runTests.js --coverageReporters=text-lcov | ../../node_modules/.bin/coveralls",
+    "doc": "node ../../scripts/docs.js",
+    "doc:latest": "node ../../scripts/docs  --version=latest"
   }
 }
