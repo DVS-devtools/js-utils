@@ -4,7 +4,7 @@ process.on('unhandledRejection', (err) => {
     throw err;
 });
 
-const { loadWebpack } = require('./utils');
+const { loadWebpack } = require('../utils');
 
 const buildingPackage = process.cwd();
 

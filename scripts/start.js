@@ -5,14 +5,12 @@ process.on('unhandledRejection', (err) => {
     throw err;
 });
 
-// const WebpackDevServer = require('webpack-dev-server');
 const { spawn } = require('child_process');
 const {
-    // loadWebpack,
     webpackConfig,
     webpackConfigPath,
     freePort,
-} = require('./utils');
+} = require('../utils');
 
 const buildingPackage = process.cwd();
 

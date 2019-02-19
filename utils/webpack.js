@@ -16,7 +16,7 @@ function webpackConfigPath(buildingPackageDir) {
     if (fs.existsSync(customConfigPath)) {
         return customConfigPath;
     }
-    return path.resolve(__dirname, '..', '..', 'webpack.config.js');
+    return path.resolve(__dirname, '..', 'webpack.config.js');
 }
 
 /**
