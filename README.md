@@ -47,3 +47,13 @@ Or:
 $ cd packages/PACKAGENAME
 $ npm [yarn] run lint
 ```
+
+##### Build the package for release
+```bash
+$ lerna run build [--stream] [--scope name]
+```
+Or:
+```bash
+$ cd packages/PACKAGENAME
+$ npm [yarn] run build
+```
