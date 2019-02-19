@@ -23,7 +23,6 @@ export default {
      * @see modules/info
      */
     info,
-
     /**
      * @see modules/log
      */

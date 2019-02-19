@@ -14,4 +14,5 @@ module.exports = {
     freePort: require('./freePort'),
     loadBabel: require('./loadBabel'),
     loadEslint: require('./loadEslint'),
+    getArgv: require('./getArgv'),
 };
