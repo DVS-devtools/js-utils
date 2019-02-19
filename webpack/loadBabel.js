@@ -5,7 +5,7 @@ const packagePath = process.cwd();
 
 const validConfigNames = ['babel.config.js', '.babelrc', '.babelrc.js'];
 
-module.exports = requireConfig(
+module.exports = () => requireConfig(
     packagePath,
     validConfigNames,
     path.resolve(__dirname, '..', 'babel.config.js'),

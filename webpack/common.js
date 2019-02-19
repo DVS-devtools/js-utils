@@ -1,10 +1,15 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
-const { babelOptions } = require('./loadBabel');
+const babelOptions = require('./loadBabel');
 
 const packagePath = process.cwd();
 
+/**
+ * Supports per package .eslintrc.js file, with fallback to the repo root .eslintrc.js
+ * @return {string}
+ */
 function getEslintRc() {
     const customEslintRc = path.resolve(packagePath, '.eslintrc.js');
     if (fs.existsSync(customEslintRc)) {

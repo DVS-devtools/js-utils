@@ -2,16 +2,31 @@
 const path = require('path');
 const fs = require('fs');
 
-function customConfigPath(buildPath, validConfigNames) {
+/**
+ * Check if one of the validConfigNames files exists in the passed packagePath,
+ * return the first match
+ * @param packagePath
+ * @param validConfigNames
+ * @return {*}
+ */
+function customConfigPath(packagePath, validConfigNames) {
     return validConfigNames.find((filename) => {
-        const configPath = path.resolve(buildPath, filename);
+        const configPath = path.resolve(packagePath, filename);
         return fs.existsSync(configPath);
     });
 }
 
-function getConfigPath(buildPath, validConfigNames, fallback) {
+/**
+ * Get the config file to use for the given packagePath,
+ * if no config files are found inside the packagePath, return the fallback
+ * @param packagePath
+ * @param validConfigNames
+ * @param fallback
+ * @return {*}
+ */
+function getConfigPath(packagePath, validConfigNames, fallback) {
     let configFile;
-    const customConfig = customConfigPath(buildPath, validConfigNames);
+    const customConfig = customConfigPath(packagePath, validConfigNames);
     if (customConfig) {
         configFile = customConfig;
     } else {
@@ -20,8 +35,15 @@ function getConfigPath(buildPath, validConfigNames, fallback) {
     return configFile;
 }
 
-function requireConfig(buildPath, validConfigNames, fallback) {
-    return require(getConfigPath(buildPath, validConfigNames, fallback));
+/**
+ * Require the config file to use for the given packagePath
+ * @param packagePath
+ * @param validConfigNames
+ * @param fallback
+ * @return {any}
+ */
+function requireConfig(packagePath, validConfigNames, fallback) {
+    return require(getConfigPath(packagePath, validConfigNames, fallback));
 }
 
 module.exports = {

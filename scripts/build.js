@@ -8,6 +8,11 @@ const { loadWebpack } = require('./utils');
 
 const buildingPackage = process.cwd();
 
+/**
+ * Callback for logging webpack compiling progress
+ * @param err
+ * @param stats
+ */
 function runCallback(err, stats) {
     if (err) {
         console.error(err.stack || err);
@@ -25,6 +30,9 @@ function runCallback(err, stats) {
     }
 }
 
+/**
+ * Run Webpack
+ */
 function build() {
     console.log(`Building from ${buildingPackage}`);
     const Compiler = loadWebpack(buildingPackage);
