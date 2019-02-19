@@ -12,4 +12,6 @@ module.exports = {
     getConfigPath,
     getLibraryName: require('./libraryName'),
     freePort: require('./freePort'),
+    loadBabel: require('./loadBabel'),
+    loadEslint: require('./loadEslint'),
 };

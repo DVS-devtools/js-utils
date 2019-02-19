@@ -1,17 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
-const path = require('path');
-const fs = require('fs');
-const { babelOptions } = require('./loadBabel');
+const { loadBabel, loadEslint } = require('../utils');
 
 const packagePath = process.cwd();
-
-function getEslintRc() {
-    const customEslintRc = path.resolve(packagePath, '.eslintrc.js');
-    if (fs.existsSync(customEslintRc)) {
-        return customEslintRc;
-    }
-    return path.resolve(__dirname, '..', '.eslintrc.js');
-}
 
 module.exports = {
     module: {
@@ -38,7 +29,7 @@ module.exports = {
                     options: {
                         emitWarning: process.env.NODE_ENV !== 'production',
                         useEslintrc: false,
-                        configFile: getEslintRc(),
+                        configFile: loadEslint(packagePath),
                     },
                 },
                 exclude: /(node_modules)/,
@@ -49,7 +40,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         rootMode: 'upward',
-                        ...babelOptions(),
+                        ...loadBabel(packagePath, true),
                     }
                 },
                 exclude: /(node_modules)/,

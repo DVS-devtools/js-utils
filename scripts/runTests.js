@@ -6,7 +6,7 @@ process.on('unhandledRejection', (err) => {
 
 const path = require('path');
 const { spawn } = require('child_process');
-const { getConfigPath } = require('./utils');
+const { getConfigPath } = require('../utils');
 
 const buildingPackage = process.cwd();
 

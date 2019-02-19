@@ -5,17 +5,20 @@ process.on('unhandledRejection', (err) => {
     throw err;
 });
 
-// const WebpackDevServer = require('webpack-dev-server');
 const { spawn } = require('child_process');
 const {
-    // loadWebpack,
     webpackConfig,
     webpackConfigPath,
     freePort,
-} = require('./utils');
+} = require('../utils');
 
 const buildingPackage = process.cwd();
 
+/**
+ * Run the webpack-dev-server
+ * Spawn a new process that calls the webpack-dev-derver bin
+ * and use the package dir webpack config (if found, else fallback to the repo root webpack config)
+ */
 function start() {
     console.log(`Starting from ${buildingPackage}`);
     const configPath = webpackConfigPath(buildingPackage);
