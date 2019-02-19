@@ -1,16 +1,22 @@
 const path = require('path');
 
+const rootDir = `packages/${path.basename(process.cwd())}`;
+
 const coveragePath = () => {
-    const buildingPackage = path.basename(process.cwd());
     const glob = 'src/**/*.js';
-    return [`packages/${buildingPackage}/${glob}`];
+    return [
+        `${glob}`,
+        '!/index.js',
+        '!globals.js',
+    ];
 };
 
 module.exports = {
+    rootDir,
     collectCoverage: true,
     collectCoverageFrom: coveragePath(),
     transform: {
-        '^.+\\.js?$': './babel.jest.js'
+        '^.+\\.js?$': path.resolve(__dirname, './babel.jest.js')
     },
     coverageReporters: ['lcov', 'text', 'text-summary']
 };
