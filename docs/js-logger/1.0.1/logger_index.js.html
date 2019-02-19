@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>index.js - Documentation</title>
+    <title>logger/index.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">index.js</h1>
+    <h1 class="page-title">logger/index.js</h1>
     
 
     
@@ -39,46 +39,93 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @class JsLogger
- * @description JsLogger is an advanced logger used for stable production build. You can set
- *  the enable value using the init function depending where you are.
+            <pre class="prettyprint source linenums"><code>import Globals from '../globals';
+/* eslint-disable no-console */
+/**
+ * @memberof JsLogger
+ * @function debug
+ * @description Debug message for debug logging
+ * @param {any} [args] Any params you want to log as debug
+ * @returns void
+ *
+ * @example
+ * // Debug JsLogger
+ *  JsLogger.debug(1, 'a', [1], {message: 'a message'}, true);
  */
-import init from './init';
-import {
-    debug, info, log, warn, error
-} from './logger';
-
-export default {
-    /**
-     * @see modules/init
-     */
-    init,
-
-    /**
-     * @see modules/debug
-     */
-    debug,
-
-    /**
-     * @see modules/info
-     */
-    info,
-    /**
-     * @see modules/log
-     */
-    log,
-
-    /**
-     * @see modules/warn
-     */
-    warn,
-
-    /**
-     * @see modules/error
-     */
-    error
+export const debug = (...args) => {
+    if (Globals.enable) {
+        console.debug(args);
+    }
 };
+
+
+/**
+ * @memberof JsLogger
+ * @function info
+ * @description Info message for info logging
+ * @param {any} [args] Any params you want to log as info
+ * @returns void
+ *
+ * @example
+ * // Info JsLogger
+ *  JsLogger.info(1, 'a', [1], {message: 'a message'}, true);
+ */
+export const info = (...args) => {
+    if (Globals.enable) {
+        console.info(args);
+    }
+};
+
+
+/**
+ * @memberof JsLogger
+ * @function log
+ * @description Log message for log logging
+ * @param {any} [args] Any params you want to log as log
+ * @returns void
+ *
+ * @example
+ * // Log JsLogger
+ *  JsLogger.log(1, 'a', [1], {message: 'a message'}, true);
+ */
+export const log = (...args) => {
+    if (Globals.enable) {
+        console.log(args);
+    }
+};
+
+
+/**
+ * @memberof JsLogger
+ * @function warn
+ * @description Warn message for warn logging
+ * @param {any} [args] Any params you want to log as warn
+ * @returns void
+ *
+ * @example
+ * // Warn JsLogger
+ *  JsLogger.warn(1, 'a', [1], {message: 'a message'}, true);
+ */
+export const warn = (...args) => {
+    console.warn(args);
+};
+
+
+/**
+ * @memberof JsLogger
+ * @function error
+ * @description Error message for error logging
+ * @param {any} [args] Any params you want to log as error
+ * @returns void
+ *
+ * @example
+ * // Error JsLogger
+ *  JsLogger.error(1, 'a', [1], {message: 'a message'}, true);
+ */
+export const error = (...args) => {
+    console.error(args);
+};
+/* eslint-enable no-console */
 </code></pre>
         </article>
     </section>
