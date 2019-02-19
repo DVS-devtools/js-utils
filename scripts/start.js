@@ -26,15 +26,14 @@ function start() {
     const host = config.devServer.host || '127.0.0.1';
 
     freePort(host, port).then((free) => {
-        console.log(free);
-
         const wds = spawn(wdsBin, ['--config', configPath, '--port', free, '--open']);
 
         wds.stdout.on('data', data => console.log(data.toString()));
         wds.stderr.on('data', data => console.error(data.toString()));
     });
     // TODO using webpack-dev-server Node Api some features do not works,
-    //  like opening the browser and livereload (no ws socket is attached to the client)
+    //  like opening the browser and livereload (no ws socket is attached to the client),
+    //  this is why we have to spawn a new cli process, the console output is not well formatted...
 }
 
 start();

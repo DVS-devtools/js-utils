@@ -53,7 +53,7 @@ function freePort(host, chosenPort) {
                     resolve(port);
                 })
                 .catch(err => reject(err));
-        }, Math.random() * (10000 - 1000) + 1000);
+        }, Math.random() * (5000 - 1000) + 1000);
     });
 }
 

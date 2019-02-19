@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
-const babelOptions = require('../babel.config');
+const { babelOptions } = require('./loadBabel');
 
 const packagePath = process.cwd();
 
@@ -47,7 +47,10 @@ module.exports = {
                 test: /\.js$/,
                 use: {
                     loader: 'babel-loader',
-                    options: babelOptions(),
+                    options: {
+                        rootMode: 'upward',
+                        ...babelOptions(),
+                    }
                 },
                 exclude: /(node_modules)/,
             },
