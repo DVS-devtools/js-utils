@@ -9,6 +9,8 @@
     "build:browser": "NODE_ENV=production BUILD_TARGET=browser node ../../scripts/build.js",
     "build": "npm run build:umd && npm run build:browser",
     "start": "NODE_ENV=development node ../../scripts/start.js",
-    "test": "jest --config ../../jest.config.js"
+    "test": "node ../../scripts/runTests.js",
+    "test:watch": "node ../../scripts/runTests.js --watchAll",
+    "test:coveralls": "node ../../scripts/runTests.js --coverageReporters=text-lcov | ../../node_modules/.bin/coveralls"
   }
 }
