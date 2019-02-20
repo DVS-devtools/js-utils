@@ -1,0 +1,20 @@
+language: node_js
+
+node_js:
+   - "10"
+
+branches:
+  only:
+    - master
+    - develop
+
+install:
+  - npm install
+
+matrix:
+  include:
+    - env: PACKAGE=packages/js-browser
+    - env: PACKAGE=packages/js-logger
+    - env: PACKAGE=packages/js-eventbus
+
+script: .travis/build_package.sh $TRAVIS_COMMIT_RANGE $PACKAGE
