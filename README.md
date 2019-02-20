@@ -1,6 +1,6 @@
 # js-utils
 
-[![Coverage Status](https://coveralls.io/repos/github/docomodigital/js-utils/badge.svg?branch=develop)](https://coveralls.io/github/docomodigital/js-utils?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/docomodigital/js-utils/badge.svg?branch=master)](https://coveralls.io/github/docomodigital/js-utils?branch=master)
 
 ## Docomodigital Monorepo with all common Vanilla Js libraries.
 
