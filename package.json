@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "jest --config jest.config.js",
+    "test:coveralls": "jest --config jest.config.js --coverageReporters=text-lcov | coveralls"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/docomodigital/js-utils.git"
