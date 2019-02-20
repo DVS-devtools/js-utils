@@ -13,8 +13,13 @@ install:
 
 matrix:
   include:
-    - env: PACKAGE=packages/js-browser
-    - env: PACKAGE=packages/js-logger
-    - env: PACKAGE=packages/js-eventbus
+    - name: "Js Browser"
+      env: PACKAGE=packages/js-browser
+    - name: "Js Logger"
+      env: PACKAGE=packages/js-logger
+    - name: "Js EventBus"
+      env: PACKAGE=packages/js-eventbus
 
-script: .travis/build_package.sh $TRAVIS_COMMIT_RANGE $PACKAGE
+script: .travis/build_package.sh
+#script:
+#  - cd $PACKAGE_LOCATION
