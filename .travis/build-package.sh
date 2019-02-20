@@ -2,14 +2,13 @@
 
 set -ex
 
-echo $PWD
-echo $CWD
+if [ ! -d "$PACKAGE" ]; then
+    echo "$PACKAGE does not exists, skipping"
+    exit 0
+fi;
 
-cd $PACKAGE
+lerna run lint --stream --scope $SCOPE
 
-npm run lint
+lerna run build --stream --scope $SCOPE
 
-npm run build
-
-npm run test
-
+lerna run test --stream --scope $SCOPE

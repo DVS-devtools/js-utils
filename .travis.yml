@@ -10,17 +10,18 @@ branches:
 
 install:
   - npm install
+  - npm global install lerna
 
 matrix:
   include:
     - name: "Js Browser"
-      env: PACKAGE=packages/js-browser
+      env: PACKAGE=packages/js-browser SCOPE=@docomodigital/js-browser
     - name: "Js Logger"
-      env: PACKAGE=packages/js-logger
+      env: PACKAGE=packages/js-logger SCOPE=@docomodigital/js-logger
     - name: "Js EventBus"
-      env: PACKAGE=packages/js-eventbus
+      env: PACKAGE=packages/js-eventbus SCOPE=@docomodigital/js-eventbus
 
-script: if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $PACKAGE; then .travis/build-package.sh $PACKAGE; else echo "$PACKAGE is NOT being built"; fi
+script: if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $PACKAGE; then .travis/build-package.sh $PACKAGE $SCOPE; else echo "$PACKAGE is NOT being built"; fi
 
 #script:
 #  - cd $PACKAGE_LOCATION
