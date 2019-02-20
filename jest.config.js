@@ -1,9 +1,16 @@
 const path = require('path');
 
-const rootDir = `packages/${path.basename(process.cwd())}`;
+const isRootTests = () => process.cwd() === __dirname;
+
+const rootDir = isRootTests() ? './' : `packages/${path.basename(process.cwd())}`;
 
 const coveragePath = () => {
-    const glob = 'src/**/*.js';
+    let glob;
+    if (isRootTests()) {
+        glob = 'packages/*/src/**/*.js';
+    } else {
+        glob = 'src/**/*.js';
+    }
     return [
         `${glob}`,
         '!/index.js',
