@@ -12,7 +12,6 @@
     "start": "NODE_ENV=development node ../../scripts/start.js",
     "test": "node ../../scripts/runTests.js",
     "test:watch": "node ../../scripts/runTests.js --watchAll",
-    "test:coveralls": "node ../../scripts/runTests.js --coverageReporters=text-lcov | ../../node_modules/.bin/coveralls",
     "test:open": "node ../../scripts/runTests.js && open coverage/lcov-report/index.html",
     "lint": "node ../../scripts/lint.js",
     "doc": "node ../../scripts/docs.js",

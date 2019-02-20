@@ -21,7 +21,6 @@ matrix:
     - name: "Js EventBus"
       env: PACKAGE=packages/js-eventbus SCOPE=@docomodigital/js-eventbus
 
-script: if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $PACKAGE; then .travis/build-package.sh $PACKAGE $SCOPE; else echo "$PACKAGE is NOT being built"; fi
-
-#script:
-#  - cd $PACKAGE_LOCATION
+script:
+  - if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $PACKAGE; then .travis/build-package.sh $PACKAGE $SCOPE; else echo "$PACKAGE is NOT being built"; fi
+  - npm run test:coveralls
