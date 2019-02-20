@@ -1,5 +1,7 @@
 # js-utils
 
+[![Coverage Status](https://coveralls.io/repos/github/docomodigital/js-utils/badge.svg?branch=develop)](https://coveralls.io/github/docomodigital/js-utils?branch=develop)
+
 ## Docomodigital Monorepo with all common Vanilla Js libraries.
 
 Packages on this repo are not dependent to each other, this monorepo exists only to simplify the development process, sharing all the development tools (webpack, babel, jest, eslint...) to all the packages
