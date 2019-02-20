@@ -20,7 +20,7 @@ matrix:
     - name: "Js EventBus"
       env: PACKAGE=packages/js-eventbus
 
-script: if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $PROJECT; then echo "$PROJECT is being built"; else echo "$PROJECT is NOT being built"; fi
+script: if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $PACKAGE; then echo "$PACKAGE is being built"; else echo "$PACKAGE is NOT being built"; fi
 
 #script:
 #  - cd $PACKAGE_LOCATION
