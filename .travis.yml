@@ -1,0 +1,26 @@
+language: node_js
+
+node_js:
+   - "10"
+
+branches:
+  only:
+    - master
+    - develop
+
+install:
+  - npm install
+  - npm install -g lerna
+
+matrix:
+  include:
+    - name: "Js Browser"
+      env: PACKAGE=packages/js-browser SCOPE=@docomodigital/js-browser
+    - name: "Js Logger"
+      env: PACKAGE=packages/js-logger SCOPE=@docomodigital/js-logger
+    - name: "Js EventBus"
+      env: PACKAGE=packages/js-eventbus SCOPE=@docomodigital/js-eventbus
+
+script:
+  - if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $PACKAGE; then .travis/build-package.sh $PACKAGE $SCOPE; else echo "$PACKAGE is NOT being built"; fi
+  - npm run test:coveralls
