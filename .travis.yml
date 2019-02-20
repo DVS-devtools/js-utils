@@ -10,7 +10,7 @@ branches:
 
 install:
   - npm install
-  - npm global install lerna
+  - npm install -g lerna
 
 matrix:
   include:
