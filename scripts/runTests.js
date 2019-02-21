@@ -23,6 +23,9 @@ function runTests(options = []) {
 
     jest.stdout.on('data', data => console.log(data.toString()));
     jest.stderr.on('data', data => console.error(data.toString()));
+    jest.on('exit', (code) => {
+        process.exit(code);
+    });
 }
 
 runTests(getArgv());

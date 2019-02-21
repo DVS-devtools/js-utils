@@ -45,6 +45,9 @@ function docs(options = []) {
 
     jsdoc.stdout.on('data', data => console.log(data.toString()));
     jsdoc.stderr.on('data', data => console.error(data.toString()));
+    jsdoc.on('exit', (code) => {
+        process.exit(code);
+    });
 }
 
 docs(getArgv());
