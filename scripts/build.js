@@ -19,11 +19,13 @@ function runCallback(err, stats) {
         if (err.details) {
             console.error(err.details);
         }
+        process.exit(1);
         return;
     }
     const info = stats.toJson();
     if (stats.hasErrors()) {
         console.error(info.errors);
+        process.exit(1);
     }
     if (stats.hasWarnings()) {
         console.warn(info.warnings);
