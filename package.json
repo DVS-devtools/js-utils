@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --config jest.config.js",
-    "test:coveralls": "jest --config jest.config.js --coverageReporters=text-lcov | coveralls"
+    "test:coveralls": "jest --config jest.config.js --coverageReporters=text-lcov | coveralls",
+    "lint:all": "lerna run lint --stream",
+    "test:all": "lerna run test --stream",
+    "build:all": "lerna run build --stream",
+    "doc:all": "lerna run doc --stream",
+    "doc:latest:all": "lerna run doc:latest --stream"
   },
   "repository": {
     "type": "git",
