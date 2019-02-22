@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const path = require('path');
 const { CLIEngine } = require('eslint');
-const { loadEslint } = require('../utils');
+const { loadEslint, loadEslintIgnore } = require('../utils');
 
 const buildingPackage = process.cwd();
 
@@ -9,9 +8,20 @@ function lint() {
     const cli = new CLIEngine({
         cwd: buildingPackage,
         useEslintrc: false,
+        extensions: ['.js'],
+        ignore: true,
         configFile: loadEslint(buildingPackage),
+        ignorePath: loadEslintIgnore(buildingPackage),
     });
-    const report = cli.executeOnFiles(['src/**']);
+    let report;
+    try {
+        report = cli.executeOnFiles(['src/**']);
+    } catch (e) {
+        if (e.messageTemplate && ['file-not-found', 'all-files-ignored'].includes(e.messageTemplate)) {
+            console.log('All clear');
+            return;
+        }
+    }
     let formatter;
     try {
         formatter = cli.getFormatter();

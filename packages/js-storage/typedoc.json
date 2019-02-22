@@ -1,0 +1,10 @@
+{
+  "mode": "file",
+  "module": "commonjs",
+  "theme": "default",
+  "out": "docs",
+  "target": "ES5",
+  "excludeExternals": true,
+  "stripInternal": true,
+  "exclude": "**/*.test.ts"
+}

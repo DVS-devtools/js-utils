@@ -35,7 +35,7 @@ module.exports = {
                 exclude: /(node_modules)/,
             },
             {
-                test: /\.js$/,
+                test: /\.(js|ts)x?$/,
                 use: {
                     loader: 'babel-loader',
                     options: {
