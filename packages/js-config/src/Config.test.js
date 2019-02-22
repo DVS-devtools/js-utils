@@ -32,7 +32,6 @@ describe('CONFIG INIT', () => {
 });
 
 describe('CONFIG VALUE', () => {
-
     beforeEach(() => {
         Config.init({ config: CONFIG, upperCase: false });
     });
@@ -71,7 +70,6 @@ describe('CONFIG VALUE', () => {
 });
 
 describe('CONFIG FALSE VALUE', () => {
-
     beforeEach(() => {
         Config.init({ config: CONFIG, upperCase: false });
     });
@@ -118,7 +116,6 @@ describe('CONFIG FALSE VALUE', () => {
 });
 
 describe('CONFIG UPPERCASE - uppercase test', () => {
-
     beforeEach(() => {
         Config.init({ config: CONFIG, upperCase: true });
     });
