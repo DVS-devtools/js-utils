@@ -22,6 +22,7 @@ function lint() {
     const output = formatter(report.results);
     if (output) {
         console.info(output);
+        process.exit(1);
     } else {
         console.log('All clear');
     }
