@@ -1,7 +1,7 @@
 /**
  * @class JsPlatform
  * @description JsPlatform is a library that allow you to get platform wherever you are
- * (iphone, ipad, android or desktop);
+ * (iPhone, iPad, android or desktop);
  * @param {String} uaString user agent string
  *
  * @example
