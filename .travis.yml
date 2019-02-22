@@ -26,6 +26,8 @@ matrix:
       env: PACKAGE=packages/js-dictionary SCOPE=@docomodigital/js-dictionary
     - name: "Js Platform"
       env: PACKAGE=packages/js-platform SCOPE=@docomodigital/js-platform
+    - name: "Js Analytics"
+      env: PACKAGE=packages/js-analytics SCOPE=@docomodigital/js-analytics
 
 script:
   - if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $PACKAGE; then .travis/build-package.sh $PACKAGE $SCOPE; else echo "$PACKAGE is NOT being built"; fi
