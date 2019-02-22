@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>getQueryParams/index.js - Documentation</title>
+    <title>Browser/index.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">getQueryParams/index.js</h1>
+    <h1 class="page-title">Browser/index.js</h1>
     
 
     
@@ -40,41 +40,75 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @memberof JsBrowser
- * @function getQueryParams
- * @description Return the query params object (this will work only if query params
- * are after the hashbang)
- * @returns {Object} {queryParamsKey1: queryParamsValue1, queryParamsKey2: queryParamsValue2... }
- *
- * @example
- * import Browser from 'js-browser';
- *
- *
- * const queryParams = Browser.getQueryParams();
+ * @class JsBrowser
+ * @description JsBrowser provides you an alternative method to manage previous
+ * and current page changements. Is particularly used to get query params as
+ * object and to get the previous page in order to implement an easy and basic history
+ * in your routing
  */
 
-export default () => {
-    // take from BarneyBrowser.getQueryParams, we can change this after
-    const url = window.location.href;
-    const vars = {};
-    let hash;
+import getQueryParams from '../getQueryParams';
 
-    if (url.indexOf('?') !== -1) {
-        const querystring = url.slice(url.indexOf('?') + 1);
-        if (querystring) {
-            const hashes = querystring.split('&amp;');
+class Browser {
+    constructor() {
+        this.currentPage = null;
+        this.prevPage = null;
 
-            for (let i = 0; i &lt; hashes.length; i += 1) {
-                if (hashes[i].indexOf('=') !== -1) {
-                    hash = hashes[i].split('=');
+        /**
+         * @see modules/getQueryParams
+         */
+        this.getQueryParams = getQueryParams;
 
-                    vars[hash[0]] = window.decodeURIComponent(hash[1]);
-                }
-            }
+        this.shiftPage = this.shiftPage.bind(this);
+        this.getPrevPage = this.getPrevPage.bind(this);
+    }
+
+    /**
+     * @memberof JsBrowser
+     * @function shiftPage
+     * @description Adapt the Browser.prevPage and Browser.currentPage
+     * according to route's changement.
+     *
+     * **NB:** route changements must be specified in your routing changement function observer
+     * @param {String} currentPage set the previous page to the actual Browser.currentPage, then
+     * set the Browser.currentPage to the given new value
+     *
+     * @example
+     * // Browser.shiftPage();
+     *
+     * import Browser from 'js-browser';
+     *
+     *
+     * Browser.shiftPage('/newPage');
+     */
+    shiftPage(currentPage) {
+        if (currentPage &amp;&amp; this.currentPage !== currentPage) {
+            this.prevPage = this.currentPage;
+            this.currentPage = currentPage;
         }
     }
-    return vars;
-};
+
+    /**
+     * @memberof JsBrowser
+     * @function getPrevPage
+     * @description Return the previous page you visited, if is empty, then returns null.
+     *
+     * @returns {String} previous page visited (ie: '/home')
+     *
+     * @example
+     * // Browser.getPrevPage();
+     *
+     * import Browser from 'js-browser';
+     *
+     *
+     * const prevPage = Browser.getPrevPage(); // '/home'
+     */
+    getPrevPage() {
+        return this.prevPage;
+    }
+}
+
+export default new Browser();
 </code></pre>
         </article>
     </section>

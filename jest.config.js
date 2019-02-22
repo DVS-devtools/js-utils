@@ -5,16 +5,18 @@ const isRootTests = () => process.cwd() === __dirname;
 const rootDir = isRootTests() ? './' : `packages/${path.basename(process.cwd())}`;
 
 const coveragePath = () => {
-    let glob;
+    let rootPath;
     if (isRootTests()) {
-        glob = 'packages/*/src/**/*.js';
+        rootPath = 'packages/*/src';
     } else {
-        glob = 'src/**/*.js';
+        rootPath = 'src';
     }
+    const glob = path.join(rootPath, '/**/*.js');
     return [
         `${glob}`,
-        '!/index.js',
-        '!globals.js',
+        `!${path.join(rootPath, 'index.js')}`,
+        `!${path.join(rootPath, 'index.browser.js')}`,
+        `!${path.join(rootPath, 'globals.js')}`,
     ];
 };
 
