@@ -21,11 +21,11 @@ matrix:
     - name: "Js EventBus"
       env: PACKAGE=packages/js-eventbus SCOPE=@docomodigital/js-eventbus
     - name: "Js Config"
-        env: PACKAGE=packages/js-config SCOPE=@docomodigital/js-config
+      env: PACKAGE=packages/js-config SCOPE=@docomodigital/js-config
     - name: "Js Dictionary"
-        env: PACKAGE=packages/js-dictionary SCOPE=@docomodigital/js-dictionary
+      env: PACKAGE=packages/js-dictionary SCOPE=@docomodigital/js-dictionary
     - name: "Js Platform"
-        env: PACKAGE=packages/js-platform SCOPE=@docomodigital/js-platform
+      env: PACKAGE=packages/js-platform SCOPE=@docomodigital/js-platform
 
 script:
   - if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $PACKAGE; then .travis/build-package.sh $PACKAGE $SCOPE; else echo "$PACKAGE is NOT being built"; fi
