@@ -7,7 +7,7 @@ if [ ! -d "$1" ]; then
     exit 0
 fi;
 
-lerna run bootstrap
+lerna bootstrap
 
 lerna run lint --stream --scope $2
 
