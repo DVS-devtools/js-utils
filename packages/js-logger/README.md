@@ -43,8 +43,3 @@ npm install --save @docomodigital/js-logger
 To read documentation, go to:
 
 [http://docomodigital.github.io/js-logger/latest](http://docomodigital.github.io/js-logger/latest)
-
-or run the following command inside the js-logger folder: 
-```bash
-npm run doc:open
-```

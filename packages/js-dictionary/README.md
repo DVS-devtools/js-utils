@@ -34,8 +34,3 @@ npm install --save @docomodigital/js-dictionary
 To read documentation, go to:
 
 [http://docomodigital.github.io/js-dictionary/latest](http://docomodigital.github.io/js-dictionary/latest)
-
-or run the following command inside the js-dictionary folder: 
-```bash
-npm run doc:open
-```

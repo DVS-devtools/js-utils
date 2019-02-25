@@ -29,11 +29,3 @@ npm install --save @docomodigital/js-platform
 To read documentation, go to:
 
 [http://docomodigital.github.io/js-platform/latest](http://docomodigital.github.io/js-platform/latest)
-
-or run the following command insite the js-platform folder: 
-```bash
-npm run doc:open
-```
-
-
-151.101.240.133
