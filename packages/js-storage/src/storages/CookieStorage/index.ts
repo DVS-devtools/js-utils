@@ -35,6 +35,9 @@ class Cookiestorage implements StorageInterface{
       } else if (typeof options.exminutes !== 'undefined') {
         d.setTime(d.getTime() + (options.exminutes * 60 * 1000));
         newCookie += `; expires=${d.toUTCString()}`;
+      } else {
+        d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000)); // SET DEFAULT EXDAYS TO 7
+        newCookie += `; expires=${d.toUTCString()}`;
       }
 
       if (typeof options.path !== 'undefined') {
@@ -64,7 +67,7 @@ class Cookiestorage implements StorageInterface{
   }
 
   delete(key: string, options: CookieOptions = {}) {
-    const opts = Object.assign(options, { exdays: -1 });
+    const opts = Object.assign({}, options, { exdays: -1 });
     this.set(key, '', opts);
   }
 }
