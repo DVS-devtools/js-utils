@@ -9,7 +9,7 @@ branches:
     - develop
 
 install:
-  - npm install
+  - yarn install
   - npm install -g lerna typescript
 
 matrix:
