@@ -32,8 +32,3 @@ npm install --save @docomodigital/js-browser
 To read documentation, go to:
 
 [http://docomodigital.github.io/js-browser/latest](http://docomodigital.github.io/js-browser/latest)
-
-or run the following command insite the js-browser folder: 
-```bash
-npm run doc:open
-```

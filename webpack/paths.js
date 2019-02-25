@@ -1,9 +1,12 @@
 const path = require('path');
 const fs = require('fs');
+const { isTypescriptPackage } = require('../utils');
 
 const packagePath = process.cwd();
 
-const entryPath = path.resolve(packagePath, 'src', 'index.js');
+const indexName = isTypescriptPackage(packagePath) ? 'index.ts' : 'index.js';
+
+const entryPath = path.resolve(packagePath, 'src', indexName);
 
 const browserEntry = () => {
     const indexBrowser = path.resolve(packagePath, 'src', 'index.browser.js');
@@ -21,7 +24,7 @@ module.exports = {
     jsFolder: 'js',
     examplePath: {
         html: path.resolve(packagePath, 'example', 'index.html'),
-        js: path.resolve(packagePath, 'example', 'index.js'),
+        js: path.resolve(packagePath, 'example', indexName),
     },
     chunkFilename: '[name].chunk.[chunkhash:8].js',
 };

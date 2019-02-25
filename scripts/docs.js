@@ -1,11 +1,17 @@
-/* eslint-disable import/no-dynamic-require,global-require */
+/* eslint-disable import/no-dynamic-require,import/no-extraneous-dependencies,global-require */
 process.on('unhandledRejection', (err) => {
     throw err;
 });
 
 const path = require('path');
 const { spawn } = require('child_process');
-const { getConfigPath, requireConfig, getArgv } = require('../utils');
+const {
+    getConfigPath,
+    requireConfig,
+    getArgv,
+    isTypescriptPackage,
+    hasTypeDoc,
+} = require('../utils');
 
 const buildingPackage = process.cwd();
 
@@ -13,7 +19,7 @@ const validConfigNames = ['.jsdoc.js', '.jsdoc.json'];
 
 function getVersion() {
     const argv = getArgv();
-    const arg = argv.find(arg => arg.startsWith('--version='));
+    const arg = argv.find(a => a.startsWith('--version='));
     if (!arg) {
         return require(path.join(buildingPackage, 'package.json')).version;
     }
@@ -26,11 +32,10 @@ function distFolder() {
         validConfigNames,
         path.resolve(__dirname, '..', '.jsdoc.js'),
     ).opts.destination || path.resolve(__dirname, '..', 'docs', buildingPackage);
-    const version = getVersion();
-    return path.join(baseDistFolder, version);
+    return path.join(baseDistFolder, getVersion());
 }
 
-function docs(options = []) {
+function docsJs(options = []) {
     console.log(`Generating docs from ${buildingPackage}`);
     const configPath = getConfigPath(
         buildingPackage,
@@ -50,4 +55,28 @@ function docs(options = []) {
     });
 }
 
-docs(getArgv());
+function docsTs() {
+    console.log(`Generating docs from ${buildingPackage}`);
+    const config = requireConfig(
+        buildingPackage,
+        ['typedoc.json'],
+        path.resolve(__dirname, '..', 'typedoc.json')
+    );
+    const dest = path.join(config.out || path.resolve(__dirname, '..', 'docs', buildingPackage), getVersion());
+    const { Application } = require('typedoc');
+    const app = new Application(config);
+    const project = app.convert(app.expandInputFiles(['src']));
+    if (project) {
+        if (!app.generateDocs(project, dest)) {
+            process.exit(1);
+        }
+    } else {
+        process.exit(1);
+    }
+}
+
+if (isTypescriptPackage(buildingPackage) && hasTypeDoc(buildingPackage)) {
+    docsTs(getArgv());
+} else {
+    docsJs(getArgv());
+}

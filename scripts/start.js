@@ -1,10 +1,9 @@
 /* eslint-disable import/no-dynamic-require,global-require,import/no-extraneous-dependencies */
-const path = require('path');
-
 process.on('unhandledRejection', (err) => {
     throw err;
 });
 
+const path = require('path');
 const { spawn } = require('child_process');
 const {
     webpackConfig,

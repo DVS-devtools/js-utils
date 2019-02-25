@@ -25,7 +25,7 @@
  *     'UserStatus' : 'logged'
  * });
  */
-import global from '../global';
+import global from '../globals';
 
 export default (dimensionObj) => {
     let slot, value;

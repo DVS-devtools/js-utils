@@ -1,5 +1,5 @@
 import init from './index';
-import global from '../global';
+import global from '../globals';
 
 let mockGA, mockLogger;
 

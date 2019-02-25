@@ -50,8 +50,3 @@ npm install --save @docomodigital/js-config
 To read documentation, go to:
 
 [http://docomodigital.github.io/js-config/latest](http://docomodigital.github.io/js-config/latest)
-
-or run the following command inside the js-config folder: 
-```bash
-npm run doc:open
-```
