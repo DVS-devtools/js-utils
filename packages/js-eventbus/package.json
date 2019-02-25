@@ -15,7 +15,10 @@
     "test:open": "node ../../scripts/runTests.js && open coverage/lcov-report/index.html",
     "lint": "node ../../scripts/lint.js",
     "doc": "node ../../scripts/docs.js",
-    "doc:latest": "node ../../scripts/docs  --version=latest"
+    "doc:latest": "node ../../scripts/docs  --version=latest",
+    "preversion": "npm run lint && npm run test",
+    "version": "npm run build && npm run doc && npm run doc:latest && npm run copyFiles",
+    "copyFiles": "node ../../scripts/copyFiles.js"
   },
   "publishConfig": {
     "access": "public"
