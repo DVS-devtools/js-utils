@@ -21,7 +21,7 @@
  *     }
  * });
  */
-import global from '../global';
+import global from '../globals';
 
 export default (options) => {
     const properties = {

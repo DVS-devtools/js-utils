@@ -16,11 +16,15 @@
       "es5",
       "es6",
       "es2015",
-      "es2015.promise",
       "es2017"
     ]
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts"
   ]
 }

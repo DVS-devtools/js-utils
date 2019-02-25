@@ -7,7 +7,7 @@
  * @example
  * JsAnalytics.setId("123rgr");
  */
-import global from '../global';
+import global from '../globals';
 
 export default (id) => {
     if (id) {

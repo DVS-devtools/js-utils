@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf ./dist",
-    "build:types": "tsc --emitDeclarationOnly --outFile dist/index.d.ts",
+    "build:types": "tsc --emitDeclarationOnly",
     "build:umd": "NODE_ENV=production BUILD_TARGET=umd node ../../scripts/build.js",
     "build:browser": "NODE_ENV=production BUILD_TARGET=browser node ../../scripts/build.js",
     "build": "npm run build:umd && npm run build:browser && npm run build:types",
@@ -20,10 +20,6 @@
     "test:open": "node ../../scripts/runTests.js && open coverage/lcov-report/index.html",
     "lint": "node ../../scripts/lint.js",
     "doc": "node ../../scripts/docs.js",
-    "doc:latest": "node ../../scripts/docs  --version=latest"
-  },
-  "devDependencies": {
-    "tslint-config-airbnb": "^5.11.1",
-    "tslint-loader": "^3.5.4"
+    "doc:latest": "node ../../scripts/docs --version=latest"
   }
 }

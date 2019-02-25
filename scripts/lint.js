@@ -1,10 +1,18 @@
-/* eslint-disable import/no-extraneous-dependencies */
-const { CLIEngine } = require('eslint');
-const { loadEslint, loadEslintIgnore } = require('../utils');
+/* eslint-disable import/no-extraneous-dependencies,global-require */
+const fs = require('fs');
+const path = require('path');
+const glob = require('glob');
+const {
+    loadEslint,
+    loadEslintIgnore,
+    isTypescriptPackage,
+    hasTsLint,
+} = require('../utils');
 
 const buildingPackage = process.cwd();
 
-function lint() {
+function lintJs() {
+    const { CLIEngine } = require('eslint');
     const cli = new CLIEngine({
         cwd: buildingPackage,
         useEslintrc: false,
@@ -38,4 +46,45 @@ function lint() {
     }
 }
 
-lint();
+function isFileExcluded(filepath, configFile, Matcher) {
+    if (
+        configFile === undefined
+        || configFile.linterOptions === undefined
+        || configFile.linterOptions.exclude === undefined
+    ) {
+        return false;
+    }
+    const fullPath = path.resolve(filepath);
+
+    return configFile.linterOptions.exclude.some(pattern => new Matcher(pattern).match(fullPath));
+}
+
+function lintTs() {
+    const { Minimatch } = require('minimatch');
+    const { Linter, Configuration } = require('tslint');
+    const configName = path.resolve(buildingPackage, 'tslint.json');
+    const files = glob.sync('src/**/*', { nodir: true });
+    const linter = new Linter({ fix: false });
+    const config = Configuration.findConfiguration(configName).results;
+    files.filter(file => !isFileExcluded(file, config, Minimatch)).forEach((file) => {
+        const fileContents = fs.readFileSync(path.resolve(buildingPackage, file), 'utf8');
+        linter.lint(file, fileContents, config);
+    });
+    const { output, errorCount } = linter.getResult();
+    if (output && output.trim()) {
+        console.log(' ');
+        console.log(`${output}`);
+        console.log(' ');
+    }
+    if (errorCount > 0) {
+        process.exit(1);
+    } else {
+        console.log('All clear');
+    }
+}
+
+if (isTypescriptPackage(buildingPackage) && hasTsLint(buildingPackage)) {
+    lintTs();
+} else {
+    lintJs();
+}

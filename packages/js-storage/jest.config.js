@@ -1,21 +1,8 @@
 const config = require('../../jest.config');
 
+// We need to override the rootDir because global jest defines as ./packages/PACKAGE_NAME
 config.rootDir = './';
-config.transform['^.+\\.ts$'] = 'ts-jest';
-config.testRegex = '(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$';
-config.moduleFileExtensions = [
-    'ts',
-    'tsx',
-    'js',
-    'jsx',
-    'json',
-    'node'
-];
 
-config.collectCoverageFrom = [
-    'src/**/*.ts',
-    '!src/index.ts',
-    '!src/interfaces.ts',
-];
+config.collectCoverageFrom.push('!src/interfaces.ts');
 
 module.exports = config;
