@@ -15,5 +15,8 @@
     "lint": "node ../../scripts/lint.js",
     "doc": "node ../../scripts/docs.js",
     "doc:latest": "node ../../scripts/docs  --version=latest"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
