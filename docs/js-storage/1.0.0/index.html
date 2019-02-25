@@ -62,42 +62,29 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="js-utils">js-utils</h1>
-				<p><a href="https://travis-ci.com/docomodigital/js-utils"><img src="https://travis-ci.com/docomodigital/js-utils.svg?branch=master" alt="Build Status"></a>
-				<a href="https://coveralls.io/github/docomodigital/js-utils?branch=master"><img src="https://coveralls.io/repos/github/docomodigital/js-utils/badge.svg?branch=master" alt="Coverage Status"></a></p>
-				<h2 id="docomodigital-monorepo-with-all-common-vanilla-js-libraries-">Docomodigital Monorepo with all common Vanilla Js libraries.</h2>
-				<p>Packages on this repo are not dependent to each other, this monorepo exists only to simplify the development process, sharing all the development tools (webpack, babel, jest, eslint...) to all the packages</p>
+				<h2 id="js-storage">js-storage</h2>
+				<p><a href="https://badge.fury.io/js/%40docomodigital%2Fjs-storage"><img src="https://badge.fury.io/js/%40docomodigital%2Fjs-storage.svg" alt="npm version"></a></p>
+				<p>Storage is the library to save and get data in different ways.</p>
 				<h2 id="usage">Usage</h2>
-				<p>This repo uses <a href="https://github.com/lerna/lerna">Lerna</a>, so every lerna commands are available.</p>
-				<p><strong>Common cli command flags</strong></p>
-				<p>Add <code>--stream</code> flag to show a better formatted console output for every package process</p>
-				<p>Add a <code>--scope [package.json name][]</code> flag to run the command only on the specified packages</p>
-				<h3 id="start-the-dev-server-for-one-or-more-packages">Start the Dev server for one or more packages</h3>
-				<pre><code class="language-bash">$ lerna run start [--stream] [--scope name]</code></pre>
-				<p>Or:</p>
-				<pre><code class="language-bash">$ <span class="hljs-built_in">cd</span> packages/PACKAGENAME
-$ npm [yarn] run start</code></pre>
-				<h3 id="run-the-tests-for-one-or-more-packages">Run the tests for one or more packages</h3>
-				<pre><code class="language-bash">$ lerna run <span class="hljs-built_in">test</span> [--stream] [--scope name]</code></pre>
-				<p>Or:</p>
-				<pre><code class="language-bash">$ <span class="hljs-built_in">cd</span> packages/PACKAGENAME
-$ npm [yarn] run <span class="hljs-built_in">test</span></code></pre>
-				<p>Other test scripts:</p>
-				<ul>
-					<li><code>lerna [npm - yarn] run test:watch</code> (watch files and rerun tests on file change)</li>
-					<li><code>lerna [npm - yarn] run test:open</code> (run the tests and open the html coverage results)</li>
-					<li><code>lerna [npm - yarn] run test:coveralls</code> (run the tests and send the coverage results to <a href="https://coveralls.io">Coveralls</a>)</li>
-				</ul>
-				<h3 id="run-the-linter-eslint-">Run the linter (eslint)</h3>
-				<pre><code class="language-bash">$ lerna run lint [--stream] [--scope name]</code></pre>
-				<p>Or:</p>
-				<pre><code class="language-bash">$ <span class="hljs-built_in">cd</span> packages/PACKAGENAME
-$ npm [yarn] run lint</code></pre>
-				<h3 id="build-the-package-for-release">Build the package for release</h3>
-				<pre><code class="language-bash">$ lerna run build [--stream] [--scope name]</code></pre>
-				<p>Or:</p>
-				<pre><code class="language-bash">$ <span class="hljs-built_in">cd</span> packages/PACKAGENAME
-$ npm [yarn] run build</code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> Storage <span class="hljs-keyword">from</span> <span class="hljs-string">'@docomodigital/js-storage'</span>;
+
+<span class="hljs-comment">// Set an item in the storage</span>
+Storage.set(<span class="hljs-string">'locale'</span>, <span class="hljs-string">'en'</span>);
+
+<span class="hljs-comment">// Get a previously setted item from the storage</span>
+Storage.get(<span class="hljs-string">'locale'</span>); <span class="hljs-comment">// 'en'</span>
+
+<span class="hljs-comment">// Delete an item from the storage if present</span>
+Storage.delete(<span class="hljs-string">'locale'</span>);
+
+<span class="hljs-comment">// Switch to another Storage (window.localStorage), default is cookie</span>
+Storage.setStorage(<span class="hljs-string">'localstorage'</span>);</code></pre>
+				<h2 id="installation">Installation</h2>
+				<h3 id="npm">NPM</h3>
+				<pre><code class="language-bash">npm install --save @docomodigital/js-storage</code></pre>
+				<h2 id="documentation">Documentation</h2>
+				<p>To read documentation, go to:</p>
+				<p><a href="http://docomodigital.github.io/js-storage/latest">http://docomodigital.github.io/js-storage/latest</a></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
