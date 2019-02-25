@@ -29,6 +29,10 @@ $ npm [yarn] run start
 
 ### Run the tests for one or more packages
 ```bash
+$ npm [yarn] run test:all
+```
+Or:
+```bash
 $ lerna run test [--stream] [--scope name]
 ```
 Or:
@@ -43,6 +47,10 @@ Other test scripts:
 
 ### Run the linter (eslint)
 ```bash
+$ npm [yarn] run lint:all
+```
+Or:
+```bash
 $ lerna run lint [--stream] [--scope name]
 ```
 Or:
@@ -53,10 +61,42 @@ $ npm [yarn] run lint
 
 ### Build the package for release
 ```bash
+$ npm [yarn] run build:all
+```
+Or:
+```bash
 $ lerna run build [--stream] [--scope name]
 ```
 Or:
 ```bash
 $ cd packages/PACKAGENAME
 $ npm [yarn] run build
+```
+
+### Generate the package docs with the current package version
+```bash
+$ npm [yarn] run doc:all
+```
+Or:
+```bash
+$ lerna run doc [--stream] [--scope name]
+```
+Or:
+```bash
+$ cd packages/PACKAGENAME
+$ npm [yarn] run doc
+```
+
+### Generate the package docs with the current package version in a "latest" folder
+```bash
+$ npm [yarn] run doc:latest:all
+```
+Or:
+```bash
+$ lerna run doc:latest [--stream] [--scope name]
+```
+Or:
+```bash
+$ cd packages/PACKAGENAME
+$ npm [yarn] run doc:latest
 ```
