@@ -9,6 +9,10 @@ const hasTsLint = (packagePath = process.cwd()) => (
     fs.existsSync(path.resolve(packagePath, 'tslint.json'))
 );
 
+const hasTypeDoc = (packagePath = process.cwd()) => (
+    fs.existsSync(path.resolve(packagePath, 'typedoc.json'))
+);
+
 const isIndexTs = (packagePath = process.cwd()) => (
     fs.existsSync(path.resolve(packagePath, 'src', 'index.ts'))
 );
@@ -21,5 +25,6 @@ module.exports = {
     hasTsConfig,
     hasTsLint,
     isIndexTs,
+    hasTypeDoc,
     isTypescriptPackage,
 };

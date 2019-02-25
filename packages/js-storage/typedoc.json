@@ -2,7 +2,7 @@
   "mode": "file",
   "module": "commonjs",
   "theme": "default",
-  "out": "docs",
+  "out": "../../docs/js-storage",
   "target": "ES5",
   "excludeExternals": true,
   "stripInternal": true,

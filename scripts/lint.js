@@ -1,4 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies,global-require */
+process.on('unhandledRejection', (err) => {
+    throw err;
+});
+
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');

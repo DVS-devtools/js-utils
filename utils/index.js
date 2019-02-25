@@ -7,6 +7,7 @@ const {
     hasTsConfig,
     hasTsLint,
     isIndexTs,
+    hasTypeDoc,
 } = require('./isTypescriptPackage');
 
 module.exports = {
@@ -20,6 +21,7 @@ module.exports = {
     hasTsConfig,
     hasTsLint,
     isIndexTs,
+    hasTypeDoc,
     getLibraryName: require('./libraryName'),
     freePort: require('./freePort'),
     loadBabel: require('./loadBabel'),
