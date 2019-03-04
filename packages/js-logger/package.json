@@ -3,6 +3,10 @@
   "version": "2.0.0",
   "description": "Advanced logger used for stable production build",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build:umd": "NODE_ENV=production BUILD_TARGET=umd node ../../scripts/build.js",

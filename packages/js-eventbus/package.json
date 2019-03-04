@@ -3,6 +3,9 @@
   "version": "2.0.0",
   "description": "Simple library to trigger custom events",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf ./dist",
