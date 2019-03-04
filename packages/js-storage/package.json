@@ -1,6 +1,6 @@
 {
   "name": "@docomodigital/js-storage",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "Storage is the library to save and get data in different ways.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
