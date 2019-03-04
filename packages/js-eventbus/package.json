@@ -1,14 +1,26 @@
 {
   "name": "@docomodigital/js-eventbus",
   "version": "1.0.1",
-  "description": "",
+  "description": "Simple library to trigger custom events",
   "main": "dist/index.js",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build:umd": "NODE_ENV=production BUILD_TARGET=umd node ../../scripts/build.js",
     "build:browser": "NODE_ENV=production BUILD_TARGET=browser node ../../scripts/build.js",
     "build": "npm run build:umd && npm run build:browser",
     "start": "NODE_ENV=development node ../../scripts/start.js",
-    "test": "jest --config ../../jest.config.js"
+    "test": "node ../../scripts/runTests.js",
+    "test:watch": "node ../../scripts/runTests.js --watchAll",
+    "test:open": "node ../../scripts/runTests.js && open coverage/lcov-report/index.html",
+    "lint": "node ../../scripts/lint.js",
+    "doc": "node ../../scripts/docs.js",
+    "doc:latest": "node ../../scripts/docs  --version=latest",
+    "preversion": "npm run lint && npm run test",
+    "version": "npm run build && npm run doc && npm run doc:latest && npm run copyFiles",
+    "copyFiles": "node ../../scripts/copyFiles.js"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

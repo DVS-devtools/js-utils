@@ -1,0 +1,39 @@
+language: node_js
+
+node_js:
+   - "10"
+
+branches:
+  only:
+    - master
+    - develop
+    - /^greenkeeper/.*$/
+
+install:
+  - yarn install
+  - npm install -g lerna typescript
+
+matrix:
+  include:
+    - name: "Js Browser"
+      env: PACKAGE=packages/js-browser SCOPE=@docomodigital/js-browser
+    - name: "Js Logger"
+      env: PACKAGE=packages/js-logger SCOPE=@docomodigital/js-logger
+    - name: "Js EventBus"
+      env: PACKAGE=packages/js-eventbus SCOPE=@docomodigital/js-eventbus
+    - name: "Js Config"
+      env: PACKAGE=packages/js-config SCOPE=@docomodigital/js-config
+    - name: "Js Dictionary"
+      env: PACKAGE=packages/js-dictionary SCOPE=@docomodigital/js-dictionary
+    - name: "Js Platform"
+      env: PACKAGE=packages/js-platform SCOPE=@docomodigital/js-platform
+    - name: "Js Analytics"
+      env: PACKAGE=packages/js-analytics SCOPE=@docomodigital/js-analytics
+    - name: "Js Fetcher"
+      env: PACKAGE=packages/js-fetcher SCOPE=@docomodigital/js-fetcher
+    - name: "Js Storage"
+      env: PACKAGE=packages/js-storage SCOPE=@docomodigital/js-storage
+
+script:
+  - if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $PACKAGE; then .travis/build-package.sh $PACKAGE $SCOPE; else echo "$PACKAGE is NOT being built"; fi
+  - npm run test:coveralls

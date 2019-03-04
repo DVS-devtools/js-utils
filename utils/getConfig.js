@@ -28,7 +28,7 @@ function getConfigPath(packagePath, validConfigNames, fallback) {
     let configFile;
     const customConfig = customConfigPath(packagePath, validConfigNames);
     if (customConfig) {
-        configFile = customConfig;
+        configFile = path.resolve(packagePath, customConfig);
     } else {
         configFile = fallback;
     }
