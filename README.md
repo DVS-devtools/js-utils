@@ -1,5 +1,6 @@
 # js-utils
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/docomodigital/js-utils.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.com/docomodigital/js-utils.svg?branch=master)](https://travis-ci.com/docomodigital/js-utils)
 [![Coverage Status](https://coveralls.io/repos/github/docomodigital/js-utils/badge.svg?branch=master)](https://coveralls.io/github/docomodigital/js-utils?branch=master)
 
