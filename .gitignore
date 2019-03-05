@@ -2,3 +2,6 @@
 .idea/
 node_modules/
 yarn.lock
+dist/
+coverage/
+packages/*/coverage

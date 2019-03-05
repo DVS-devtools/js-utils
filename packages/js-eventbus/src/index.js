@@ -1,6 +1,3 @@
+import EventBus from './EventBus';
 
-export default {
-    addEventListener: (event, cb) => {
-        console.log(event, cb);
-    }
-};
+export default EventBus;

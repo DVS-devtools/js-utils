@@ -2,6 +2,13 @@
 
 const { webpackConfig, webpackConfigPath, loadWebpack } = require('./webpack');
 const { requireConfig, customConfigPath, getConfigPath } = require('./getConfig');
+const {
+    isTypescriptPackage,
+    hasTsConfig,
+    hasTsLint,
+    isIndexTs,
+    hasTypeDoc,
+} = require('./isTypescriptPackage');
 
 module.exports = {
     webpackConfig,
@@ -10,8 +17,15 @@ module.exports = {
     requireConfig,
     customConfigPath,
     getConfigPath,
+    isTypescriptPackage,
+    hasTsConfig,
+    hasTsLint,
+    isIndexTs,
+    hasTypeDoc,
     getLibraryName: require('./libraryName'),
     freePort: require('./freePort'),
     loadBabel: require('./loadBabel'),
     loadEslint: require('./loadEslint'),
+    loadEslintIgnore: require('./loadEslintIgnore'),
+    getArgv: require('./getArgv'),
 };
