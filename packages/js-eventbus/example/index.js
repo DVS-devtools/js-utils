@@ -31,11 +31,19 @@ const ctx = {
     foo: 'bar'
 };
 
-Bus.on('context', () => {
+Bus.on('context', function () {
     console.log(this.foo);
 }, ctx);
 
 document.getElementById('context').addEventListener('click', (e) => {
     e.preventDefault();
     Bus.trigger('context');
+});
+
+
+document.getElementById('add').addEventListener('click', (e) => {
+    e.preventDefault();
+    Bus.on('test', () => {
+        console.log('trigger');
+    });
 });
