@@ -21,7 +21,7 @@ describe('EventBus - trigger all callbacks', () => {
         Bus.trigger(event);
         expect(cb1).toHaveBeenCalled();
         expect(cb2).toHaveBeenCalled();
-        expect(Bus.events[event].length).toBe(2);
+        expect(Bus.events[event].stack.length).toBe(2);
     });
 
     it('trigger should pass the given args to the callbacks', () => {
@@ -44,7 +44,15 @@ describe('EventBus - trigger all callbacks', () => {
         Bus.trigger(event);
         expect(cb1).not.toHaveBeenCalled();
         expect(cb2).not.toHaveBeenCalled();
-        expect(Bus.events[event]).toBeUndefined();
+        expect(Bus.events[event].stack.length).toBe(0);
+    });
+
+    it('should trigger only the new callback if a registered event was already triggered', () => {
+        Bus.on(event, cb1);
+        Bus.trigger(event);
+        Bus.on(event, cb2);
+        expect(cb2).toHaveBeenCalled();
+        expect(cb1).toHaveBeenCalledTimes(1);
     });
 });
 
@@ -62,13 +70,16 @@ describe('EventBus - off', () => {
         Bus.off(event, cb1);
         Bus.trigger(event);
         expect(cb1).not.toHaveBeenCalled();
-        expect(Bus.events[event].length).toBe(1);
+        expect(Bus.events[event].stack.length).toBe(1);
     });
 
     it('off should not do anything if no callback is registered to the given event', () => {
         Bus.off(event, cb1);
         Bus.trigger(event);
-        expect(Bus.events[event]).toBeUndefined();
+        expect(cb1).not.toHaveBeenCalled();
+        expect(Bus.events[event].stack.length).toBe(0);
+        expect(Bus.events[event].params.length).toBe(0);
+        expect(Bus.events[event].triggered).toBeTruthy();
     });
 });
 
@@ -85,11 +96,18 @@ describe('EventBus - clear and clearAll', () => {
         Bus.on(event, cb1);
         Bus.on(event, cb2);
         Bus.clear(event);
+
+        expect(Bus.events[event].stack.length).toBe(0);
+        expect(Bus.events[event].params.length).toBe(0);
+        expect(Bus.events[event].triggered).toBeFalsy();
+
         Bus.trigger(event);
 
         expect(cb1).not.toHaveBeenCalled();
         expect(cb2).not.toHaveBeenCalled();
-        expect(Bus.events[event].length).toBe(0);
+        expect(Bus.events[event].stack.length).toBe(0);
+        expect(Bus.events[event].params.length).toBe(0);
+        expect(Bus.events[event].triggered).toBeTruthy();
     });
 
     it('clear should not do anything if no callbacks is registered to the given event', () => {
@@ -105,10 +123,16 @@ describe('EventBus - clear and clearAll', () => {
         Bus.clearAll();
         Bus.trigger(event);
         Bus.trigger(event2);
+
         expect(cb1).not.toHaveBeenCalled();
         expect(cb2).not.toHaveBeenCalled();
-        expect(Bus.events[event]).toBeUndefined();
-        expect(Bus.events[event2]).toBeUndefined();
-        expect(Object.keys(Bus.events).length).toBe(0);
+
+        expect(Bus.events[event].stack.length).toBe(0);
+        expect(Bus.events[event].params.length).toBe(0);
+        expect(Bus.events[event].triggered).toBeTruthy();
+
+        expect(Bus.events[event2].stack.length).toBe(0);
+        expect(Bus.events[event2].params.length).toBe(0);
+        expect(Bus.events[event2].triggered).toBeTruthy();
     });
 });
