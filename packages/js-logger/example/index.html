@@ -3,7 +3,7 @@
     <title>JS Logger</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        input {
+        input[type="text"] {
             border: 1px solid #aaaaaa;
             width: 100%;
             height: 30px;
@@ -64,6 +64,14 @@
             background-color: #eb4c4c;
             color: white;
         }
+
+        .checkboxes {
+            display: flex;
+        }
+        .checkboxes label {
+            display: block;
+            margin: 0 10px;
+        }
     </style>
 </head>
 <body>
@@ -76,7 +84,22 @@
     <li><button onClick="window.jsLog()" class="log">Log</button></li>
     <li><button onClick="window.jsWarn()" class="warn">Warn</button></li>
     <li><button onClick="window.jsError()" class="error">Error</button></li>
+    <li><button onClick="window.jsTable()" class="table">Table</button></li>
 </ul>
+
+<br><br>
+
+<form onsubmit="return window.jsInit(event)">
+    <div class="checkboxes">
+        <label><input type="checkbox" name="debug"> Debug</label>
+        <label><input type="checkbox" name="log"> Log</label>
+        <label><input type="checkbox" name="table"> Table</label>
+        <label><input type="checkbox" name="info"> Info</label>
+        <label><input type="checkbox" name="warn"> Warn</label>
+        <label><input type="checkbox" name="error"> Error</label>
+    </div>
+    <button type="submit">Set</button>
+</form>
 
 </body>
 </html>

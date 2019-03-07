@@ -5,7 +5,7 @@
  */
 import init from './init';
 import {
-    debug, info, log, warn, error
+    debug, info, log, warn, error, table,
 } from './logger';
 
 export default {
@@ -23,10 +23,16 @@ export default {
      * @see modules/info
      */
     info,
+
     /**
      * @see modules/log
      */
     log,
+
+    /**
+     * @see modules/table
+     */
+    table,
 
     /**
      * @see modules/warn
