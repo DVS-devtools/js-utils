@@ -38,10 +38,19 @@ class EventBus {
      * }, ctx);
      */
     on(eventType, func, context = null) {
-        if (!this.events[eventType]) {
-            this.events[eventType] = [];
+        const { [eventType]: event } = this.events;
+        if (event) {
+            if (event.triggered) {
+                func.call(context || this, ...event.params);
+            }
+            event.stack.push({ func, context });
+        } else {
+            this.events[eventType] = {
+                triggered: false,
+                params: [],
+                stack: [{ func, context }],
+            };
         }
-        this.events[eventType].push({ func, context });
     }
 
     /**
@@ -56,14 +65,16 @@ class EventBus {
      * Bus.trigger('customEvent'); //cb is called
      */
     trigger(eventType, ...args) {
-        const { [eventType]: event } = this.events;
-        if (!event || event.length === 0) {
-            return;
-        }
-        event.map((obj) => {
-            obj.func.apply(obj.context, args);
-            return obj;
+        const { [eventType]: event = { stack: [] } } = this.events;
+
+        event.stack.forEach((obj) => {
+            obj.func.call(obj.context, ...args);
         });
+        this.events[eventType] = {
+            triggered: true,
+            params: args,
+            stack: event.stack,
+        };
     }
 
     /**
@@ -83,12 +94,14 @@ class EventBus {
             return;
         }
 
-        this.events[eventType] = event.reduceRight((prev, current) => {
+        event.stack = event.stack.reduceRight((prev, current) => {
             if (current.func !== func) {
                 prev.push(current);
             }
             return prev;
         }, []);
+
+        this.events[eventType] = event;
     }
 
     /**
@@ -100,10 +113,13 @@ class EventBus {
      * Bus.clear('evt');
      */
     clear(eventType) {
-        if (!this.events[eventType]) {
-            return;
+        if (this.events[eventType]) {
+            this.events[eventType] = {
+                triggered: false,
+                params: [],
+                stack: [],
+            };
         }
-        this.events[eventType] = [];
     }
 
     /**
