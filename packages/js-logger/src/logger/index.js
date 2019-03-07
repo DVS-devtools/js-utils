@@ -1,5 +1,5 @@
-import Globals from '../globals';
-/* eslint-disable no-console */
+import emit from '../emit';
+
 /**
  * @memberof JsLogger
  * @function debug
@@ -12,9 +12,7 @@ import Globals from '../globals';
  *  JsLogger.debug(1, 'a', [1], {message: 'a message'}, true);
  */
 export const debug = (...args) => {
-    if (Globals.enable) {
-        console.debug(args);
-    }
+    emit('debug', ...args);
 };
 
 
@@ -30,9 +28,7 @@ export const debug = (...args) => {
  *  JsLogger.info(1, 'a', [1], {message: 'a message'}, true);
  */
 export const info = (...args) => {
-    if (Globals.enable) {
-        console.info(args);
-    }
+    emit('info', ...args);
 };
 
 
@@ -48,11 +44,23 @@ export const info = (...args) => {
  *  JsLogger.log(1, 'a', [1], {message: 'a message'}, true);
  */
 export const log = (...args) => {
-    if (Globals.enable) {
-        console.log(args);
-    }
+    emit('log', ...args);
 };
 
+/**
+ * @memberof JsLogger
+ * @function log
+ * @description Log message for log logging
+ * @param {any} [args] Any params you want to log as log
+ * @returns void
+ *
+ * @example
+ * // Log JsLogger
+ *  JsLogger.table(1, 'a', [1], {message: 'a message'}, true);
+ */
+export const table = (...args) => {
+    emit('table', ...args);
+};
 
 /**
  * @memberof JsLogger
@@ -66,7 +74,7 @@ export const log = (...args) => {
  *  JsLogger.warn(1, 'a', [1], {message: 'a message'}, true);
  */
 export const warn = (...args) => {
-    console.warn(args);
+    emit('warn', ...args);
 };
 
 
@@ -82,6 +90,6 @@ export const warn = (...args) => {
  *  JsLogger.error(1, 'a', [1], {message: 'a message'}, true);
  */
 export const error = (...args) => {
-    console.error(args);
+    emit('error', ...args);
 };
 /* eslint-enable no-console */

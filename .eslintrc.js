@@ -11,7 +11,8 @@ module.exports = {
         'eol-last': 'off',
         'no-param-reassign': 'off',
         'class-methods-use-this': 'off',
-        'no-console': 'off'
+        'no-console': 2,
+        'no-empty': 'off'
     },
     parserOptions: {
         ecmaFeatures: {

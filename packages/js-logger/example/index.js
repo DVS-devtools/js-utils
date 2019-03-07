@@ -30,3 +30,22 @@ window.jsError = () => {
     getMessage();
     Logger.error(message);
 };
+
+window.jsTable = () => {
+    getMessage();
+    Logger.table(message);
+};
+
+window.JsLogger = Logger;
+
+window.jsInit = (e) => {
+    e.preventDefault();
+    const level = Array.from(e.target.querySelectorAll('input[type="checkbox"]')).reduce((obj, input) => {
+        obj[input.name] = input.checked;
+        return obj;
+    }, {});
+    Logger.init({
+        enable: true,
+        level,
+    });
+};
