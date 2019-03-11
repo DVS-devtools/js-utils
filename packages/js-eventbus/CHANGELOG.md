@@ -1,3 +1,11 @@
+## 3.1.0
+
+* Add flag to skip immediate trigger on callback registration
+
+## 3.0.0
+
+* A new callback registered to a previously called event is immediately triggered
+
 ## 2.0.0
 
 * Switch to monorepo
