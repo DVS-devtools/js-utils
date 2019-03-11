@@ -22,6 +22,8 @@ class EventBus {
      * @param {Function} func - the function to call when the event is triggered
      * @param {Object} [context=null] - the 'this' applied to the function. default null,
      * this will not work with arrow functions.
+     * @param {Boolean} [triggerIfTriggered=true]
+     * immediately trigger the callback if the event was previously triggered
      * @return {void}
      * @example
      * const Bus = new EventBus();
@@ -37,10 +39,10 @@ class EventBus {
      *     console.log(this.foo) // 'bar'
      * }, ctx);
      */
-    on(eventType, func, context = null) {
+    on(eventType, func, context = null, triggerIfTriggered = true) {
         const { [eventType]: event } = this.events;
         if (event) {
-            if (event.triggered) {
+            if (event.triggered && triggerIfTriggered) {
                 func.call(context || this, ...event.params);
             }
             event.stack.push({ func, context });

@@ -54,6 +54,14 @@ describe('EventBus - trigger all callbacks', () => {
         expect(cb2).toHaveBeenCalled();
         expect(cb1).toHaveBeenCalledTimes(1);
     });
+
+    it('should not trigger the new callback if it was registered with triggerIfTriggered = false', () => {
+        Bus.on(event, cb1);
+        Bus.trigger(event);
+        Bus.on(event, cb2, null, false);
+        expect(cb2).not.toHaveBeenCalled();
+        expect(cb1).toHaveBeenCalledTimes(1);
+    });
 });
 
 describe('EventBus - off', () => {
