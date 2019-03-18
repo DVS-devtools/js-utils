@@ -101,3 +101,9 @@ Or:
 $ cd packages/PACKAGENAME
 $ npm [yarn] run doc:latest
 ```
+
+### Bump package version and publish
+```bash
+$ lerna publish
+```
+This will check all packages finding the ones with unpublished changes, asks for the new version and publish it (triggers the npm pre hooks)
