@@ -43,4 +43,4 @@ npm install --save @docomodigital/js-fetcher
 
 To read documentation, go to:
 
-[http://docomodigital.github.io/js-fetcher/latest](http://docomodigital.github.io/js-fetcher/latest)
+[http://docomodigital.github.io/js-utils/js-fetcher/latest](http://docomodigital.github.io/js-fetcher/latest)
