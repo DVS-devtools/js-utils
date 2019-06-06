@@ -30,4 +30,4 @@ npm install --save js-eventbus
 
 To read documentation, go to:
 
-[http://docomodigital.github.io/js-eventbus/latest](http://docomodigital.github.io/js-eventbus/latest)
+[http://docomodigital.github.io/js-utils/js-eventbus/latest](http://docomodigital.github.io/js-eventbus/latest)
