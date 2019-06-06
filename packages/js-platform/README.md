@@ -28,4 +28,4 @@ npm install --save @docomodigital/js-platform
 
 To read documentation, go to:
 
-[http://docomodigital.github.io/js-platform/latest](http://docomodigital.github.io/js-platform/latest)
+[http://docomodigital.github.io/js-utils/js-platform/latest](http://docomodigital.github.io/js-utils/js-platform/latest)
