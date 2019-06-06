@@ -32,4 +32,4 @@ npm install --save @docomodigital/js-storage
 
 To read documentation, go to:
 
-[http://docomodigital.github.io/js-storage/latest](http://docomodigital.github.io/js-storage/latest)
+[http://docomodigital.github.io/js-utils/js-storage/latest](http://docomodigital.github.io/js-utils/js-storage/latest)
