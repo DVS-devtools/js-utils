@@ -49,4 +49,4 @@ npm install --save @docomodigital/js-config
 
 To read documentation, go to:
 
-[http://docomodigital.github.io/js-config/latest](http://docomodigital.github.io/js-config/latest)
+[http://docomodigital.github.io/js-utils/js-config/latest](http://docomodigital.github.io/js-config/latest)
