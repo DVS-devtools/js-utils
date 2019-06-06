@@ -56,4 +56,4 @@ npm install --save @docomogital/js-analytics
 
 To read documentation, go to:
 
-[http://docomodigital.github.io/js-analytics/latest](http://docomodigital.github.io/js-analytics/latest)
+[http://docomodigital.github.io/js-utils/js-analytics/latest](http://docomodigital.github.io/js-utils/js-analytics/latest)
