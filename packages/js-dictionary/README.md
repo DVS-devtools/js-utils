@@ -33,4 +33,4 @@ npm install --save @docomodigital/js-dictionary
 
 To read documentation, go to:
 
-[http://docomodigital.github.io/js-utils/js-dictionary/latest](http://docomodigital.github.io/js-dictionary/latest)
+[http://docomodigital.github.io/js-utils/js-dictionary/latest](http://docomodigital.github.io/js-utils/js-dictionary/latest)
