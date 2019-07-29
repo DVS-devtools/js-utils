@@ -55,7 +55,7 @@
     "jsdoc": "^3.5.5",
     "lodash": "^4.17.11",
     "minami": "^1.2.3",
-    "mini-css-extract-plugin": "^0.7.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "minimatch": "^3.0.4",
     "rimraf": "^2.6.3",
     "sass-loader": "^7.1.0",
