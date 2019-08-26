@@ -12,7 +12,11 @@ module.exports = {
         'no-param-reassign': 'off',
         'class-methods-use-this': 'off',
         'no-console': 2,
-        'no-empty': 'off'
+        'no-empty': 'off',
+        'arrow-parens': ['error', 'as-needed', {
+            requireForBlockBody: true,
+        }],
+        'prefer-object-spread': 'off'
     },
     parserOptions: {
         ecmaFeatures: {

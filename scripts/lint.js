@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies,global-require */
+/* eslint-disable import/no-extraneous-dependencies,global-require,no-console */
 process.on('unhandledRejection', (err) => {
     throw err;
 });
@@ -33,6 +33,7 @@ function lintJs() {
             console.log('All clear');
             return;
         }
+        throw e;
     }
     let formatter;
     try {
