@@ -24,7 +24,7 @@
   "homepage": "https://github.com/docomodigital/js-utils#readme",
   "private": true,
   "dependencies": {
-    "lerna": "^3.13.0"
+    "lerna": "^3.18.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
