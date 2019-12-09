@@ -24,7 +24,8 @@
   "homepage": "https://github.com/docomodigital/js-utils#readme",
   "private": true,
   "dependencies": {
-    "lerna": "^3.13.0"
+    "lerna": "^3.13.0",
+    "rollup": "^1.27.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -33,12 +34,13 @@
     "@babel/plugin-proposal-decorators": "^7.3.0",
     "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.7.6",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-typescript": "^7.3.3",
     "@babel/runtime": "^7.3.1",
     "@types/jest": "^24.0.6",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.5",
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
@@ -58,6 +60,13 @@
     "mini-css-extract-plugin": "^0.8.0",
     "minimatch": "^3.0.4",
     "rimraf": "^3.0.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-size-snapshot": "^0.10.0",
+    "rollup-plugin-terser": "^5.1.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^1.0.0",
     "ts-jest": "^24.0.0",
