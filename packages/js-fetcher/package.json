@@ -11,10 +11,11 @@
     "url-search-params": "^1.1.0"
   },
   "scripts": {
-    "prebuild": "rimraf ./dist",
-    "build:umd": "NODE_ENV=production BUILD_TARGET=umd node ../../scripts/build.js",
-    "build:browser": "NODE_ENV=production BUILD_TARGET=browser node ../../scripts/build.js",
-    "build": "npm run build:umd && npm run build:browser",
+    "prebuild": "rimraf ./dist ./umd",
+    "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ../../babel.config.js ./src --out-dir ./dist",
+    "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel --config-file ../../babel.config.js ./src --out-dir ./dist/esm",
+    "build:umd": "cross-env NODE_ENV=production BABEL_ENV=production-umd rollup -c ../../rollup.config.js ",
+    "build": "yarn build:cjs && yarn build:esm && yarn build:umd",
     "start": "NODE_ENV=development node ../../scripts/start.js",
     "test": "node ../../scripts/runTests.js",
     "test:watch": "node ../../scripts/runTests.js --watchAll",
