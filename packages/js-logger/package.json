@@ -1,6 +1,6 @@
 {
   "name": "@docomodigital/js-logger",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Advanced logger used for stable production build",
   "main": "dist/index.js",
   "files": [
