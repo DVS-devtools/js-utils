@@ -4,7 +4,8 @@
   "description": "Simple library to get config value from a given object, supports nested values.",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "umd"
   ],
   "license": "MIT",
   "scripts": {

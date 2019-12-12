@@ -4,7 +4,8 @@
   "description": "JsBrowser provides you an alternative method to manage previous and current page changements.",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "umd"
   ],
   "license": "MIT",
   "scripts": {

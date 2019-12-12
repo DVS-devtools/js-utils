@@ -4,7 +4,8 @@
   "description": "Library to get Dictionary values",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "umd"
   ],
   "license": "MIT",
   "scripts": {

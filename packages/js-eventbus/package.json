@@ -4,7 +4,8 @@
   "description": "Simple library to trigger custom events",
   "main": "dist/index.js",
   "files": [
-    "dist"
+    "dist",
+    "umd"
   ],
   "license": "MIT",
   "scripts": {
