@@ -12,6 +12,9 @@
     "doc:all": "lerna run doc --stream",
     "doc:latest:all": "lerna run doc:latest --stream"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/docomodigital/js-utils.git"
