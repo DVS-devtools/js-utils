@@ -1,6 +1,6 @@
 {
   "name": "@docomodigital/js-browser",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "JsBrowser provides you an alternative method to manage previous and current page changements.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",

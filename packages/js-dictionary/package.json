@@ -1,6 +1,6 @@
 {
   "name": "@docomodigital/js-dictionary",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Library to get Dictionary values",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
