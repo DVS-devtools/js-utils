@@ -4,6 +4,7 @@
   "description": "Storage is the library to save and get data in different ways.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "module": "dist/esm/index.js",
   "files": [
     "dist",
     "umd"
