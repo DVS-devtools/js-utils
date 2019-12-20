@@ -60,7 +60,7 @@
     "jsdoc": "^3.5.5",
     "lodash": "^4.17.11",
     "minami": "^1.2.3",
-    "mini-css-extract-plugin": "^0.8.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "minimatch": "^3.0.4",
     "rimraf": "^3.0.0",
     "rollup-plugin-babel": "^4.3.3",
